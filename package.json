@@ -1,0 +1,32 @@
+{
+    "name": "tdd-ready-node",
+    "version": "1.0.0",
+    "private": false,
+    "dependencies": {
+        "body-parser": "latest",
+        "compression": "latest",
+        "express": "latest",
+        "log4js": "https://registry.npmjs.org/log4js/-/log4js-0.6.27.tgz",
+        "morgan": "latest",
+        "node-persist": "latest"
+    },
+    "devDependencies": {
+        "chai": "latest",
+        "istanbul": "latest",
+        "jsdom": "latest",
+        "lodash": "latest",
+        "log4js": "latest",
+        "mkdirp": "latest",
+        "mocha": "latest",
+        "request": "latest",
+        "sinon": "latest",
+        "sinon-chai": "latest",
+        "socket.io": "latest",
+        "zombie": "latest"
+    },
+    "scripts": {
+        "start": "node start.js",
+        "test": "mocha spec --recursive",
+        "test:coverage": "istanbul cover node_modules/mocha/bin/_mocha -- spec --recursive"
+    }
+}
