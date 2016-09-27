@@ -16,13 +16,6 @@ Check your install: run the test
 npm test
 ```
 
-You should see 1 test failing
-
-## Start!
-
-Change the failing test to start your adventure
-
-
 ## Run the app
 
 from your command line
@@ -36,3 +29,7 @@ Open your browser and navigate to
 ```sh
 http://localhost:5003
 ```
+
+## Start!
+
+Decide what to do next...
