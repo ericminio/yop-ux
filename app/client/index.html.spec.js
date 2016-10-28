@@ -1,9 +1,13 @@
+var chai = require('chai')
+    , expect = chai.expect;
+chai.use(require('../support/document.contain.element.matcher'));
+
 describe('index.html', function() {
 
     describe('serving', function() {
 
         var Zombie = require("zombie");
-        var Server = require('../../app/server/server');
+        var Server = require('../server/server');
 
         var port = 5000;
         var url = 'http://localhost:' + port;
@@ -17,7 +21,7 @@ describe('index.html', function() {
             server.stop(done);
         });
 
-        it('works', function(done) {
+        it('works (external resources are reachable)', function(done) {
             const browser = new Zombie();
 
             browser.visit(url + '/index.html')
@@ -26,11 +30,20 @@ describe('index.html', function() {
                 })
                 .then(done, done);
         });
+
+        it('initializes as expected', function(done) {
+            const browser = new Zombie();
+
+            browser.visit(url + '/index.html')
+                .then(function() {
+                    expect(browser.query('#welcome').innerHTML).to.equal('Ready :)');
+                })
+                .then(done, done);
+        });
     });
 
     describe('structure', function() {
 
-        var expect = require('chai').expect;
         var jsdom = require('jsdom').jsdom
         var document;
 
@@ -43,7 +56,7 @@ describe('index.html', function() {
         });
 
         it('has a welcome message', function() {
-            expect(document.querySelector('#welcome')).not.to.equal(undefined);
+            expect(document).to.containElement('#welcome');
         });
     });
 });
