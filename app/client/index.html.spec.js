@@ -45,7 +45,7 @@ describe('index.html', function() {
     describe('structure', function() {
 
         var fs = require('fs');
-        var { JSDOM } = require('jsdom');
+        var JSDOM = require('jsdom').JSDOM;
         var document;
 
         beforeEach(function() {
