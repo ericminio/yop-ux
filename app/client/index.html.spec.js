@@ -44,11 +44,13 @@ describe('index.html', function() {
 
     describe('structure', function() {
 
-        var jsdom = require('jsdom').jsdom
+        var fs = require('fs');
+        var { JSDOM } = require('jsdom');
         var document;
 
         beforeEach(function() {
-            document = jsdom(require('fs').readFileSync('./app/client/index.html'));
+            const dom = new JSDOM(fs.readFileSync('./app/client/index.html'));
+            document = dom.window.document;
         });
 
         it('has the expected title', function() {

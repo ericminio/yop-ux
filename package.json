@@ -2,14 +2,7 @@
     "name": "tdd-ready-node",
     "version": "1.0.0",
     "private": false,
-    "dependencies": {
-        "body-parser": "latest",
-        "compression": "latest",
-        "express": "latest",
-        "log4js": "https://registry.npmjs.org/log4js/-/log4js-0.6.27.tgz",
-        "morgan": "latest",
-        "node-persist": "latest"
-    },
+    "dependencies": {},
     "devDependencies": {
         "chai": "latest",
         "istanbul": "latest",
