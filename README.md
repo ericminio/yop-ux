@@ -1,6 +1,6 @@
 A test-driven node application
 
-[![Build Status](https://travis-ci.org/ericminio/tdd-ready-node.svg?branch=master)](https://travis-ci.org/ericminio/tdd-ready-node)
+[![Build Status](https://travis-ci.org/ericminio/yop-ux.svg?branch=master)](https://travis-ci.org/ericminio/yop-ux)
 
 ## Get ready
 
