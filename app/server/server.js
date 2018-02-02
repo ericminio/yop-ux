@@ -27,7 +27,14 @@ Server.prototype.start = function (port, done) {
         response.write(content);
         response.end();
     });
+    this.io = require('socket.io')(this.http);
+    this.io.on('connection', function(socket) {
+    });
     this.http.listen(port, done);
+};
+
+Server.prototype.sendReload = function() {
+    this.io.emit('reload', {});
 };
 
 Server.prototype.stop = function (done) {

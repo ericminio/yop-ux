@@ -14,12 +14,12 @@
         "request": "latest",
         "sinon": "latest",
         "sinon-chai": "latest",
-        "socket.io": "latest",
+        "socket.io": "^2.0.4",
         "zombie": "latest"
     },
     "scripts": {
         "start": "node start.js",
-        "test": "mocha app --recursive",
+        "test": "mocha app --recursive --exit",
         "test:coverage": "istanbul cover node_modules/mocha/bin/_mocha -- app --recursive"
     }
 }
