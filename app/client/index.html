@@ -24,5 +24,13 @@
             };
             xhr.send();
         </script>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            var socket = io();
+            socket.on('reload', function() {
+                document.location.reload(true);
+            });
+        </script>
   </body>
 </html>
