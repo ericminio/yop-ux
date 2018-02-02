@@ -40,6 +40,16 @@ describe('index.html', function() {
                 })
                 .then(done, done);
         });
+
+        it('display the menu', function(done) {
+            const browser = new Zombie();
+
+            browser.visit(url + '/index.html')
+                .then(function() {
+                    expect(browser.query('body').innerHTML).to.contain('logout');
+                })
+                .then(done, done);
+        });
     });
 
     describe('structure', function() {

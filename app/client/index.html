@@ -4,17 +4,25 @@
         <title>Who am I?</title>
         <meta charset="utf-8">
 
-        <script src="/scripts/jquery-2.1.3.min.js"></script>
+        <script src="/scripts/menu.builder.js"></script>
         <link rel="stylesheet" href="/css/main.css" />
     </head>
     <body>
 
         <div id="welcome"></div>
+        <div id="menu"></div>
 
         <script>
-            $(document).ready(function(){
-                document.getElementById('welcome').innerHTML = 'Ready :)';
-            });
+            document.getElementById('welcome').innerHTML = 'Ready :)';
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/menu.data');
+            xhr.onload = function() {
+                var data = xhr.responseText;
+                var menuDom = createMenuDom(data);
+                var menu = document.getElementById('menu');
+                menu.innerHTML = menuDom;
+            };
+            xhr.send();
         </script>
   </body>
 </html>

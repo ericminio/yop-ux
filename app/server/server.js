@@ -10,7 +10,7 @@ Server.prototype.start = function (port, done) {
         if ('/' == request.url) { request.url = '/index.html'; }
 
         var parsed = url.parse(request.url, true);
-        var filePath = path.join(__dirname, '../client/' + parsed.pathname);        
+        var filePath = path.join(__dirname, '../client/' + parsed.pathname);
         var content = fs.readFileSync(filePath).toString();
         if (/\.js$/.test(parsed.pathname)) {
             response.setHeader('Content-Type', 'application/javascript');
@@ -20,6 +20,9 @@ Server.prototype.start = function (port, done) {
         }
         if (/\.html$/.test(parsed.pathname)) {
             response.setHeader('Content-Type', 'text/html');
+        }
+        if (/\.data$/.test(parsed.pathname)) {
+            response.setHeader('Content-Type', 'text/plain');
         }
         response.write(content);
         response.end();
