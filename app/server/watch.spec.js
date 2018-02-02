@@ -56,9 +56,6 @@ describe('Modifying a file', function() {
                 fs.writeFileSync(filePath, content);
             })
             .then(function() {
-                server.sendReload();
-            })
-            .then(function() {
                 setTimeout(function() {
                     browser.wait(function() {
                         expect(browser.query('#welcome').innerHTML).to.equal('budy');

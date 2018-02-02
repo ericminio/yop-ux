@@ -30,6 +30,10 @@ Server.prototype.start = function (port, done) {
     this.io = require('socket.io')(this.http);
     this.io.on('connection', function(socket) {
     });
+    var self = this;
+    fs.watch(path.join(__dirname, '../client/'), function(e, file) {
+        self.sendReload();
+    });
     this.http.listen(port, done);
 };
 
