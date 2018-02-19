@@ -1,5 +1,14 @@
-#welcome {
-    color: blue;
+#menu {
+    display: inline-block;
+    width: 15%;
+}
+
+#content {
+    display: inline-block;
+    width: 80%;
+    height: 500px;
+    vertical-align: top;
+    border: solid 1px black;
 }
 
 .menu {
