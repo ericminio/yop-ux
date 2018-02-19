@@ -18,7 +18,7 @@ describe('menu builder', function() {
             config
         `;
         var document = new JSDOM(createMenuDom(data)).window.document;
-        var items = document.querySelectorAll('ul > li');        
+        var items = document.querySelectorAll('ul > li > a');        
 
         expect(items.length).to.equal(2);
         expect(items[0].innerHTML).to.equal('home');

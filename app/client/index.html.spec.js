@@ -47,11 +47,7 @@ describe('index.html', function() {
         });
 
         it('has the expected title', function() {
-            expect(document.getElementsByTagName('title')[0].innerHTML).to.equal('Who am I?');
-        });
-
-        it('has a welcome message', function() {
-            expect(document).to.containElement('#welcome');
+            expect(document.getElementsByTagName('title')[0].innerHTML).to.equal('Welcome');
         });
     });
 });

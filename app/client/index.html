@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Who am I?</title>
+        <title>Welcome</title>
         <meta charset="utf-8">
         <script src="/scripts/please.fetch.js"></script>
         <script src="/scripts/menu.builder.js"></script>
@@ -21,14 +21,10 @@
             });
         </script>
         <script>
-            var menuClicked = function(menu) {
-                pleaseFetch('pages/' + menu + '.html', function(content) {
-                    document.getElementById('content').innerHTML = content;
-                });
-            }
-        </script>
-        <script>
-            pleaseFetch('pages/home.html', function(content) {
+            var url = window.location.href;
+            var index = url.indexOf('=') + 1;
+            var page = index ? url.substring(index) : 'home.html' ;
+            pleaseFetch('pages/' + page + '.html', function(content) {
                 document.getElementById('content').innerHTML = content;
             });
         </script>
