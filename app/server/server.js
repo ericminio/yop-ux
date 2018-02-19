@@ -13,7 +13,10 @@ Server.prototype.start = function (port, done) {
         var filePath = path.join(__dirname, '../client/' + parsed.pathname);
         var content = '';
         try { content = fs.readFileSync(filePath).toString(); }
-        catch (error) { response.statusCode = 404; }
+        catch (error) { 
+            response.statusCode = 404; 
+            content = request.url;
+        }
         if (/\.js$/.test(parsed.pathname)) {
             response.setHeader('Content-Type', 'application/javascript');
         }

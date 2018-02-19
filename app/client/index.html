@@ -3,29 +3,34 @@
     <head>
         <title>Who am I?</title>
         <meta charset="utf-8">
-
+        <script src="/scripts/please.fetch.js"></script>
         <script src="/scripts/menu.builder.js"></script>
         <link rel="stylesheet" href="/css/main.css" />
     </head>
     <body>
 
-        <div id="welcome"></div>
+        <div id="welcome">Ready :)</div>
         <div id="menu"></div>
-        <div id="content">
-            We have to decide what comes next.
-        </div>
+        <div id="content"></div>
 
         <script>
-            document.getElementById('welcome').innerHTML = 'Ready :)';
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', '/menu.data');
-            xhr.onload = function() {
-                var data = xhr.responseText;
+            pleaseFetch('/menu.data', function(data) {
                 var menuDom = createMenuDom(data);
                 var menu = document.getElementById('menu');
                 menu.innerHTML = menuDom;
-            };
-            xhr.send();
+            });
+        </script>
+        <script>
+            var menuClicked = function(menu) {
+                pleaseFetch('pages/' + menu + '.html', function(content) {
+                    document.getElementById('content').innerHTML = content;
+                });
+            }
+        </script>
+        <script>
+            pleaseFetch('pages/home.html', function(content) {
+                document.getElementById('content').innerHTML = content;
+            });
         </script>
 
         <script src="/socket.io/socket.io.js"></script>

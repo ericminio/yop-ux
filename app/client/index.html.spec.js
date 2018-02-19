@@ -21,32 +21,15 @@ describe('index.html', function() {
             server.stop(done);
         });
 
-        it('works (external resources are reachable)', function(done) {
+        it('works', function(done) {
             const browser = new Zombie();
 
             browser.visit(url + '/index.html')
                 .then(function() {
                     browser.assert.success();
                 })
-                .then(done, done);
-        });
-
-        it('initializes as expected', function(done) {
-            const browser = new Zombie();
-
-            browser.visit(url + '/index.html')
                 .then(function() {
-                    expect(browser.query('#welcome').innerHTML).to.equal('Ready :)');
-                })
-                .then(done, done);
-        });
-
-        it('display the menu', function(done) {
-            const browser = new Zombie();
-
-            browser.visit(url + '/index.html')
-                .then(function() {
-                    expect(browser.query('body').innerHTML).to.contain('logout');
+                    expect(browser.query('body').innerHTML).to.contain('home');
                 })
                 .then(done, done);
         });
