@@ -4,6 +4,7 @@ chai.use(require('../support/document.contain.element.matcher'));
 var fs = require('fs');
 var externalApi = fs.readFileSync('app/client/scripts/menu.builder.js');
 var createMenuDom = (new Function( externalApi + 'return createMenuDom;'))();
+var JSDOM = require('jsdom').JSDOM;
 
 describe('menu builder', function() {
 
@@ -16,8 +17,11 @@ describe('menu builder', function() {
             home
             config
         `;
-        var dom = createMenuDom(data);
+        var document = new JSDOM(createMenuDom(data)).window.document;
+        var items = document.querySelectorAll('ul > li');        
 
-        expect(dom).to.equal('<ul><li>home</li><li>config</li></ul>');
+        expect(items.length).to.equal(2);
+        expect(items[0].innerHTML).to.equal('home');
+        expect(items[1].innerHTML).to.equal('config');
     });
 });
