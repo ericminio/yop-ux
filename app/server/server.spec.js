@@ -23,4 +23,11 @@ describe('Server', function() {
             done();
         });
     });
+
+    it('returns 404 when unknown', function(done) {
+        request(home + '/unknown.file', function(err, response, body) {
+            expect(response.statusCode).to.equal(404);
+            done();
+        });
+    });
 });

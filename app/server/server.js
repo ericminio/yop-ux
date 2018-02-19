@@ -11,7 +11,9 @@ Server.prototype.start = function (port, done) {
 
         var parsed = url.parse(request.url, true);
         var filePath = path.join(__dirname, '../client/' + parsed.pathname);
-        var content = fs.readFileSync(filePath).toString();
+        var content = '';
+        try { content = fs.readFileSync(filePath).toString(); }
+        catch (error) { response.statusCode = 404; }
         if (/\.js$/.test(parsed.pathname)) {
             response.setHeader('Content-Type', 'application/javascript');
         }
@@ -42,8 +44,8 @@ Server.prototype.sendReload = function() {
 };
 
 Server.prototype.stop = function (done) {
-    this.http.close(done);
+    this.http.close();
+    done();
 };
-
 
 module.exports = Server;
