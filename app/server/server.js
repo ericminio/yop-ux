@@ -11,6 +11,7 @@ Server.prototype.start = function (port, done) {
 
         var parsed = url.parse(request.url, true);
         var filePath = path.join(__dirname, '../client/' + parsed.pathname);
+        var encoding = 'utf8';
         var content = '';
         try { content = fs.readFileSync(filePath).toString(); }
         catch (error) { 
@@ -29,7 +30,12 @@ Server.prototype.start = function (port, done) {
         if (/\.data$/.test(parsed.pathname)) {
             response.setHeader('Content-Type', 'text/plain');
         }
-        response.write(content);
+        if (/\.png$/.test(parsed.pathname)) {
+            response.setHeader('Content-Type', 'image/png');
+            content = fs.readFileSync(filePath);
+            encoding = 'binary';
+        }
+        response.write(content, encoding);
         response.end();
     });
     this.io = require('socket.io')(this.http);

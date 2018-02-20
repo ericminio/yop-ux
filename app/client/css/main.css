@@ -1,17 +1,23 @@
-#menu {
+#logo, #menu {
     display: inline-block;
-    width: 15%;
+    vertical-align: top;
 }
 
 #content {
-    display: inline-block;
+    display: block;
     width: 80%;
     height: 500px;
-    vertical-align: top;
     border: solid 1px black;
 }
 
-.menu {
+ul.menu {
+    padding: 0px;
+}
+
+li.menu {
     color:blue;
     cursor: pointer;
+    list-style-type: none;
+    display: inline;
+    padding: 0px 5px 0px 5px;
 }
