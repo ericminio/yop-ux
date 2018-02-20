@@ -22,7 +22,7 @@
         <script>
             var url = window.location.href;
             var index = url.indexOf('=') + 1;
-            var page = index ? url.substring(index) : 'home.html' ;
+            var page = index ? url.substring(index) : 'home' ;
             pleaseFetch('pages/' + page + '.html', function(content) {
                 document.getElementById('content').innerHTML = content;
             });
