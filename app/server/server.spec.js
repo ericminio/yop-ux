@@ -31,4 +31,12 @@ describe('Server', function() {
             done();
         });
     });
+
+    it('can serve a png', function(done) {
+        request(home + '/images/logo.png', function(err, response, body) {
+            expect(response.statusCode).to.equal(200);
+            expect(response.headers['content-type']).to.equal('image/png');
+            done();
+        });
+    });
 });
